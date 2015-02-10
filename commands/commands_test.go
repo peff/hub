@@ -1,10 +1,18 @@
 package commands
 
 import (
+	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/github/hub/Godeps/_workspace/src/github.com/bmizerany/assert"
+	"github.com/github/hub/console"
 )
+
+func TestMain(m *testing.M) {
+	console.Default = console.Console{Stdout: ioutil.Discard, Stderr: ioutil.Discard}
+	os.Exit(m.Run())
+}
 
 func TestCommandUseSelf(t *testing.T) {
 	c := &Command{Usage: "foo"}

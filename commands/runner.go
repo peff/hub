@@ -10,6 +10,7 @@ import (
 	"github.com/github/hub/Godeps/_workspace/src/github.com/kballard/go-shellquote"
 	flag "github.com/github/hub/Godeps/_workspace/src/github.com/ogier/pflag"
 	"github.com/github/hub/cmd"
+	"github.com/github/hub/console"
 	"github.com/github/hub/git"
 	"github.com/github/hub/utils"
 )
@@ -106,7 +107,7 @@ func (r *Runner) Call(cmd *Command, args *Args) ExecError {
 
 func printCommands(cmds []*cmd.Cmd) {
 	for _, c := range cmds {
-		fmt.Println(c)
+		console.Infoln(c)
 	}
 }
 

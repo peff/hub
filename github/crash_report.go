@@ -9,6 +9,7 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/github/hub/console"
 	"github.com/github/hub/git"
 	"github.com/github/hub/utils"
 )
@@ -70,7 +71,7 @@ func report(reportedError error, stack string) {
 	issue, err := gh.CreateIssue(project, title, body, []string{"Crash Report"})
 	utils.Check(err)
 
-	fmt.Println(issue.HTMLURL)
+	console.Infoln(issue.HTMLURL)
 }
 
 func reportTitleAndBody(reportedError error, stack string) (title, body string, err error) {
@@ -111,8 +112,8 @@ func formatStack(buf []byte) string {
 }
 
 func printError(err error, stack string) {
-	fmt.Printf("%v\n\n", err)
-	fmt.Println(stack)
+	console.Infof("%v\n\n", err)
+	console.Infoln(stack)
 }
 
 func saveReportConfiguration(confirm string, always bool) {
